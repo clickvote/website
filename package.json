@@ -1,0 +1,82 @@
+{
+  "name": "click_vote",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "eslint src --fix && yarn format",
+    "lint:strict": "eslint --max-warnings=0 src",
+    "typecheck": "tsc --noEmit --incremental false",
+    "test:watch": "jest --watch",
+    "test": "jest",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
+  },
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.1",
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.2.1",
+    "@lezer/highlight": "^1.1.6",
+    "@lucasmogari/react-pagination": "^1.1.3",
+    "@react-three/drei": "^9.86.3",
+    "@react-three/fiber": "^8.14.4",
+    "@reduxjs/toolkit": "^1.9.6",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.455",
+    "@types/react-tooltip": "^4.2.4",
+    "@uiw/codemirror-themes": "^4.21.18",
+    "@uiw/react-codemirror": "^4.21.18",
+    "clsx": "^1.2.1",
+    "lucide-react": "^0.260.0",
+    "next": "^13.4.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.16.0",
+    "react-tooltip": "^5.21.5",
+    "tailwind-merge": "^1.13.2",
+    "three": "^0.157.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.3.0",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@svgr/webpack": "^8.0.1",
+    "@tailwindcss/forms": "^0.5.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/react": "^18.2.15",
+    "@types/three": "^0.156.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.45.0",
+    "eslint-config-next": "^13.4.10",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.5.0",
+    "next-router-mock": "^0.7.5",
+    "next-sitemap": "^2.5.28",
+    "postcss": "^8.4.26",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=0",
+      "prettier -w"
+    ],
+    "**/*.{json,css,scss,md,webmanifest}": [
+      "prettier -w"
+    ]
+  }
+}
