@@ -49,6 +49,22 @@ body::-webkit-scrollbar-thumb {
   background-clip: content-box;
 }
 
+.scrollbar::-webkit-scrollbar {
+  width: 1rem;
+  height: 0.8rem;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(50, 50, 50);
+  border: 3px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
