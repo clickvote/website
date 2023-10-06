@@ -18,12 +18,15 @@ import SuperFine from '~/svg/SuperFine.svg';
 const FootLink = ({
   title,
   url = extraUrls.github,
+  target = '_self',
 }: {
   title: string;
   url?: string;
+  target?: string;
 }) => (
   <Link
     href={url || '/'}
+    target={target}
     className='cursor-pointer transition duration-100 ease-in hover:text-[#00D5FF]'
   >
     {title}
@@ -64,7 +67,11 @@ export default function Footer() {
             <FootLink title='OSS Friends' />
           </div>
           <div className='flex w-full max-w-[174px] flex-col gap-2'>
-            <FootLink title='Documentation' />
+            <FootLink
+              title='Documentation'
+              url={extraUrls.doc}
+              target='_blank'
+            />
             <FootLink title='Roadmap' />
             <FootLink title='Providers' />
             <FootLink title='Handbook' />

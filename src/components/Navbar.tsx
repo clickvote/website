@@ -8,6 +8,8 @@ import GithubBtn from '@/components/GithubBtn';
 import LikeBtn from '@/components/LikeBtn';
 import Logo from '@/components/Logo';
 
+import { extraUrls } from '@/constant/config';
+
 import Close from '~/svg/Close.svg';
 import Menu from '~/svg/Menu.svg';
 
@@ -22,7 +24,8 @@ const menu = [
   },
   {
     title: 'Documentation',
-    path: '/',
+    path: extraUrls.doc,
+    target: '_blank',
   },
 ];
 
@@ -70,6 +73,7 @@ const Navbar = () => {
                     href={item?.path}
                     key={index}
                     onClick={() => toggleMenu(true)}
+                    target={item?.target || '_self'}
                   >
                     <li
                       className={`cursor-pointer border-b-[${
