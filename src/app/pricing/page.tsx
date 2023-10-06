@@ -235,7 +235,7 @@ const PricingPage = () => {
             value={status}
             onChange={(v) => setStatus(v)}
           />
-          <div className='mx-auto mt-[60px] grid grid-cols-1 items-center justify-center gap-x-[14px] gap-y-6 md:grid-cols-2 xl:grid-cols-4'>
+          <div className='mx-auto mt-[60px] grid w-full grid-cols-1 items-center justify-center justify-items-center  gap-x-[14px] gap-y-6 md:mx-10 md:grid-cols-2 xl:grid-cols-4'>
             {(status ? PricePlans : PricePlans1).map((plan, index) => (
               <PricingPlan
                 title={plan.title}

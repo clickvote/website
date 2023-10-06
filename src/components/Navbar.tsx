@@ -33,6 +33,7 @@ const Navbar = () => {
     const navLinks = document.getElementById('navLinks');
     navLinks?.classList.toggle('opacity-0', force);
     navLinks?.classList.toggle('pointer-events-none', force);
+    // navLinks?.classList.toggle('hidden', force);
   };
   React.useEffect(() => {
     toggleMenu(true);
@@ -48,7 +49,7 @@ const Navbar = () => {
         <div className='flex items-center'>
           <div
             id='navLinks'
-            className='pointer-events-none fixed inset-0 z-[99] list-none items-center bg-black text-gray-700 opacity-0 transition-opacity duration-300 md:pointer-events-auto md:relative md:flex md:bg-transparent md:opacity-100'
+            className='pointer-events-none fixed inset-0 z-[99] list-none items-center bg-black text-gray-700 opacity-0 transition-opacity duration-200 md:pointer-events-auto md:relative md:flex md:bg-transparent md:opacity-100'
           >
             <div className='m-[18px] flex items-center justify-between md:hidden'>
               <Link href='/' onClick={() => toggleMenu(true)}>
