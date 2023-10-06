@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import GithubBtn from '@/components/GithubBtn';
@@ -26,30 +27,36 @@ const menu = [
 ];
 
 const Navbar = () => {
+  const pathName = usePathname();
+
   const toggleMenu = (force = false) => {
     const navLinks = document.getElementById('navLinks');
-    navLinks?.classList.toggle('hidden', force);
+    navLinks?.classList.toggle('opacity-0', force);
+    navLinks?.classList.toggle('pointer-events-none', force);
   };
+  React.useEffect(() => {
+    toggleMenu(true);
+  }, [pathName]);
 
   return (
     <>
       <nav className='relative z-50 flex max-w-full items-center justify-between p-[18px] md:px-[25px] md:py-[30px] lg:p-[50px]'>
         <div className='flex items-center gap-[20px] lg:gap-[30px]'>
-          <Link href='/'>
-            <Logo />
-          </Link>
+          <Logo />
           <LikeBtn className='hidden md:flex' />
         </div>
         <div className='flex items-center'>
           <div
             id='navLinks'
-            className='fixed inset-0 z-[99] hidden list-none  items-center bg-black text-gray-700 md:relative md:flex md:bg-transparent'
+            className='pointer-events-none fixed inset-0 z-[99] list-none items-center bg-black text-gray-700 opacity-0 transition-opacity duration-300 md:pointer-events-auto md:relative md:flex md:bg-transparent md:opacity-100'
           >
             <div className='m-[18px] flex items-center justify-between md:hidden'>
-              <Logo />
+              <Link href='/' onClick={() => toggleMenu(true)}>
+                <Logo navigate={false} />
+              </Link>
               <div className='flex h-6 w-6 items-center justify-center'>
                 <Close
-                  className='h-[12px] w-[12px]'
+                  className='h-[16px] w-[16px]'
                   onClick={() => toggleMenu(true)}
                   loading='lazy'
                 />
@@ -58,7 +65,11 @@ const Navbar = () => {
             <ul className='mx-[20px] mt-[3px] flex flex-col justify-center md:mx-[0px] md:mt-[0px] md:flex-row md:items-center'>
               {menu &&
                 menu.map((item, index) => (
-                  <Link href={item?.path} key={index}>
+                  <Link
+                    href={item?.path}
+                    key={index}
+                    onClick={() => toggleMenu(true)}
+                  >
                     <li
                       className={`cursor-pointer border-b-[${
                         index < menu.length - 1 ? 1 : 0
