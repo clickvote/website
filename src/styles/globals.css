@@ -34,6 +34,21 @@
   color: white;
 }
 
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgb(66, 66, 66);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(104, 104, 104);
+  border: 3px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
