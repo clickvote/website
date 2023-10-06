@@ -11,11 +11,13 @@ import {
   YoutubeSvg,
 } from '@/components/svgs';
 
+import { extraUrls } from '@/constant/config';
+
 import SuperFine from '~/svg/SuperFine.svg';
 
 const FootLink = ({
   title,
-  url = 'https://github.com/clickvote/clickvote',
+  url = extraUrls.github,
 }: {
   title: string;
   url?: string;
@@ -30,7 +32,7 @@ const FootLink = ({
 
 const SocialIcon = ({
   children,
-  url = 'https://github.com/clickvote/clickvote',
+  url,
 }: {
   children?: React.ReactNode;
   url?: string;
@@ -83,19 +85,19 @@ export default function Footer() {
           <GithubBtn className='w-fit cursor-pointer md:hidden' />
 
           <div className='flex gap-[25px]'>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.github}>
               <GithubSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.linkedin}>
               <LinkedinSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.youtube}>
               <YoutubeSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.discord}>
               <DiscordSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.twitter}>
               <SocialXSvg width={24} height={24} />
             </SocialIcon>
           </div>
