@@ -1,15 +1,12 @@
 'use client';
-import { Disclosure } from '@headlessui/react';
-import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 
+import Accordion from '@/components/Accordion';
 import GradientText from '@/components/common/GradientText';
 import SwitchButton from '@/components/common/SwitchButton';
 import PricingPlan from '@/components/pricing/Plan';
 
 import Background from '@/app/blog/back';
-
-import Add from '~/svg/Add.svg';
 
 const PricePlans = [
   {
@@ -258,55 +255,13 @@ const PricingPage = () => {
             </GradientText>
             <div className='mt-[50px] flex flex-col gap-4'>
               {Faqs &&
-                Faqs.map((item, index) => {
-                  return (
-                    <Disclosure
-                      as='div'
-                      className='flex flex-col rounded-[7px] border border-[#FFFFFF66] bg-transparent px-[22px] py-[16px]'
-                      key={index}
-                    >
-                      {({ open }) => (
-                        <>
-                          <Disclosure.Button className='flex cursor-pointer items-center justify-between text-[18px] font-[500] leading-[29px]'>
-                            <span className='text-left'>{item.title}</span>{' '}
-                            <motion.span
-                              whileHover={{
-                                backgroundColor: 'rgb(161 161 170 / 0.3)',
-                              }}
-                              initial={{ backgroundColor: 'transparent' }}
-                              animate={{ rotate: open ? 45 : 0 }}
-                              transition={{
-                                duration: 0.15,
-                                type: 'tween',
-                              }}
-                              className='rounded-full p-2'
-                            >
-                              <Add className='h-4 w-4' />
-                            </motion.span>
-                          </Disclosure.Button>
-                          <AnimatePresence>
-                            <Disclosure.Panel
-                              as={motion.div}
-                              initial={{ y: -20, opacity: 0.2 }}
-                              animate={{ y: 0, opacity: 1 }}
-                              transition={{
-                                duration: 0.15,
-                                type: 'tween',
-                              }}
-                              className='mt-[12px] text-[16px] text-[#A7A7A7]'
-                            >
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html: item.description,
-                                }}
-                              ></div>
-                            </Disclosure.Panel>
-                          </AnimatePresence>
-                        </>
-                      )}
-                    </Disclosure>
-                  );
-                })}
+                Faqs.map((item, index) => (
+                  <Accordion
+                    key={index}
+                    title={item.title}
+                    description={item.description}
+                  />
+                ))}
             </div>
           </div>
         </section>
