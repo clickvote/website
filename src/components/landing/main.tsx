@@ -22,9 +22,13 @@ export default function Main() {
           Seamlessly Integrate Like, Upvote, and <br className='md:hidden' />{' '}
           Review Components into Your App
         </span>
-        <button className='bg-gradient2 mt-[24px] rounded-[7px] border-[1px] border-[#AF46FF] px-[65px] py-[16px] text-[18px] transition-all duration-100 ease-in hover:opacity-70 md:mt-[40px]'>
+        <a
+          href='https://app.clickvote.dev'
+          target='__blank'
+          className='bg-gradient2 mt-[24px] rounded-[7px] border-[1px] border-[#AF46FF] px-[65px] py-[16px] text-[18px] transition-all duration-100 ease-in hover:opacity-70 md:mt-[40px]'
+        >
           Get Started
-        </button>
+        </a>
       </div>
     </div>
   );

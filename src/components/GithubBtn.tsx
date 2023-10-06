@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn, formatStarCount } from '@/lib/utils';
 
 import Github from '~/svg/Github.svg';
 
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function GithubBtn({ className }: Props) {
-  const [repoStars, setRepoStars] = React.useState(291);
+  const [repoStars, setRepoStars] = React.useState(formatStarCount(1024));
 
   React.useEffect(() => {
     fetch(`https://api.github.com/repos/clickvote/clickvote`).then(
@@ -19,7 +19,7 @@ export default function GithubBtn({ className }: Props) {
         const data = await response.json();
 
         if (data && data.stargazers_count) {
-          setRepoStars(data.stargazers_count);
+          setRepoStars(formatStarCount(data.stargazers_count));
         }
       }
     );

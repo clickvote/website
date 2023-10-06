@@ -13,7 +13,13 @@ import {
 
 import SuperFine from '~/svg/SuperFine.svg';
 
-const FootLink = ({ title, url }: { title: string; url?: string }) => (
+const FootLink = ({
+  title,
+  url = 'https://github.com/clickvote/clickvote',
+}: {
+  title: string;
+  url?: string;
+}) => (
   <Link
     href={url || '/'}
     className='cursor-pointer transition duration-100 ease-in hover:text-[#00D5FF]'
@@ -22,10 +28,20 @@ const FootLink = ({ title, url }: { title: string; url?: string }) => (
   </Link>
 );
 
-const SocialIcon = ({ children }: { children?: React.ReactNode }) => (
-  <div className='cursor-pointer fill-[#FFFFFF50] transition duration-100 ease-in hover:fill-[#FFF]'>
+const SocialIcon = ({
+  children,
+  url = 'https://github.com/clickvote/clickvote',
+}: {
+  children?: React.ReactNode;
+  url?: string;
+}) => (
+  <a
+    href={url}
+    target='__blank'
+    className='cursor-pointer fill-[#FFFFFF50] transition duration-100 ease-in hover:fill-[#FFF]'
+  >
     {children}
-  </div>
+  </a>
 );
 
 export default function Footer() {

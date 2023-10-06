@@ -1,5 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import clsx, { ClassValue } from 'clsx';
+import numeral from 'numeral';
 import { twMerge } from 'tailwind-merge';
 
 import LIST_CATEGORY from '@/constant/category';
@@ -17,4 +18,9 @@ export const assignActionCreator =
 
 export const getCategoryTitle = (value?: string): string => {
   return LIST_CATEGORY.find((item) => item.value === value)?.title || '';
+};
+
+export const formatStarCount = (value: number): string => {
+  const result = numeral(value / 1000).format('0,0[.]0');
+  return `${result}K`;
 };
