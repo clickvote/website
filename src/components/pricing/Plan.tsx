@@ -15,6 +15,7 @@ type Props = {
     title: string;
     support: boolean;
   }>;
+  className?: string;
 };
 
 const PricingPlan = ({
@@ -24,10 +25,11 @@ const PricingPlan = ({
   actionTitle,
   content,
   defaultAction = false,
+  className = '',
 }: Props) => {
   return (
     <div
-      className='flex w-[267px] flex-col gap-[26px] rounded-[12px] border-[1px] bg-gradient-to-b from-[#07070761] via-[#FFFFFF0A] to-[#FFFFFF14] px-[24px] pb-[40px] pt-[30px]'
+      className={`${className} flex w-[267px] flex-col gap-[26px] rounded-[12px] border-[1px] bg-gradient-to-b from-[#07070761] via-[#FFFFFF0A] to-[#FFFFFF14] px-[24px] pb-[40px] pt-[30px]`}
       style={{ borderColor: '#FFFFFF32' }}
     >
       <div className='flex flex-col items-center gap-[7px]'>
