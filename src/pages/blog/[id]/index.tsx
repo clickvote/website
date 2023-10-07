@@ -13,6 +13,9 @@ import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
 import RootLayout from "@/components/layout/layout";
 
 const BlogPostPage = (data: any) => {
+  if (!data.blog) {
+    return <></>;
+  }
   const { title, description, cover, content, tag } = data.blog;
 
   return (
@@ -79,6 +82,7 @@ const BlogPostPage = (data: any) => {
 
 export const getStaticPaths = async () => {
   const blogs = await getBlogs();
+
   return {
     paths: blogs.items.map((blog: any) => ({
       params: {

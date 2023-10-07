@@ -15,6 +15,8 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'no-console': 'warn',
+    'no-unsafe-optional-chaining': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/no-unescaped-entities': 'off',
 
