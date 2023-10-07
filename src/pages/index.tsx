@@ -1,19 +1,15 @@
-'use client';
-
-import * as React from 'react';
-
 import Community from '@/components/landing/Community';
 import Embed from '@/components/landing/Embed';
 import Features from '@/components/landing/Features';
 import Main from '@/components/landing/main';
 import Service from '@/components/landing/Service';
-
-import Background from './back';
+import BackgroundMain from "@/components/layout/back_main";
+import RootLayout from "@/components/layout/layout";
 
 export default function HomePage() {
   return (
-    <>
-      <Background />
+    <RootLayout>
+      <BackgroundMain />
       <main>
         <section className='relative min-h-screen w-full overflow-clip'>
           <Main />
@@ -23,6 +19,6 @@ export default function HomePage() {
           <Service />
         </section>
       </main>
-    </>
+    </RootLayout>
   );
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default function Background() {
+export default function BackgroundMain() {
   return (
     <>
       <div className='absolute top-0 -z-50 h-[100%] w-[100%] bg-black'></div>

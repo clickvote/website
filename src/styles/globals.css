@@ -450,3 +450,25 @@ code .react-syntax-highlighter-line-number {
     margin-right: 0.75rem;
   }
 }
+
+.blog-post img {
+  margin: 20px 0;
+}
+
+.blog-post p {
+  margin: 15px 0;
+  font-weight: 300;
+}
+
+.blog-post svg {
+  display: none;
+}
+
+.blog-post h2 {
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+.blog-post .captioned-image-container + h2 {
+  margin-top: 0;
+}

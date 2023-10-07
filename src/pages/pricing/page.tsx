@@ -1,11 +1,10 @@
-'use client';
+
 import * as React from 'react';
 
 import GradientText from '@/components/common/GradientText';
 import SwitchButton from '@/components/common/SwitchButton';
 import PricingPlan from '@/components/pricing/Plan';
-
-import Background from '@/app/blog/back';
+import BackgroundBlog from "@/components/layout/back_blog";
 
 const PricePlans = [
   {
@@ -186,7 +185,7 @@ const PricingPage = () => {
   const [status, setStatus] = React.useState(true);
   return (
     <>
-      <Background />
+      <BackgroundBlog />
       <main>
         <section className='mx-auto mt-[40px] flex w-fit flex-col items-center px-5 md:mt-[100px]'>
           <GradientText className=' max-w-[950px] bg-gradient-to-t text-center text-[35px] font-[700] leading-[39px] md:text-[71px] md:leading-[79px]'>

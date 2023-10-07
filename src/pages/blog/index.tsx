@@ -1,22 +1,20 @@
-'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
-
-import { getCategoryTitle } from '@/lib/utils';
+import {useMemo, useState} from "react";
 
 import BlogFooter from '@/components/blog/footer';
 import BlogItem from '@/components/blog/item';
 import Tag from '@/components/common/Tag';
+import BackgroundBlog from "@/components/layout/back_blog";
+import RootLayout from "@/components/layout/layout";
 import Pagination from '@/components/Pagination';
 
-import LIST_CATEGORY from '@/constant/category';
-import { getBlogById, getBlogs } from '@/helper/endpoints/blog/apis';
+import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
 
-import Background from './back';
-
-import { IBlog } from '@/types/interfaces/IBlog';
+const blogsPerPage = 1;
 
 const Button = ({
   selected = false,
@@ -41,88 +39,59 @@ const Button = ({
   );
 };
 
-export default function BlogPage() {
-  // TODO: Update to use await/async endpoints
-  const {
-    blogs,
-    page: _page,
-    size,
-    total: _total,
-  } = getBlogs({
-    page: 1,
-    size: 9,
-  });
+export default function BlogPage(props: any) {
+  const [currentCategory, setCurrentCategory] = useState('All Categories');
+  const items = useMemo(() => {
+    const filteredItems = props.items.filter((item: any) => {
+        return currentCategory === 'All Categories' || item.tag === currentCategory;
+    });
+    return {
+      top: filteredItems?.[0],
+      items: filteredItems?.slice(1) || [],
+    }
+  }, [currentCategory, props.items]);
 
-  const firstBlog = getBlogById({
-    id: '33',
-  });
 
   const router = useRouter();
-  const [category, setCategory] = React.useState('');
-  const [data, setData] = React.useState(blogs);
-  const [page, setPage] = React.useState(_page);
-  const [perPage, setPageSize] = React.useState(size);
-  const [total, setTotal] = React.useState(_total);
 
   const handlePageChange = (v: number) => {
-    fetchData({
-      page: v,
-      size,
-      category,
-    });
+    return ;
   };
 
   const handleCategoryChange = (v: string) => {
-    fetchData({
-      page: 1,
-      size,
-      category: v,
-    });
+    setCurrentCategory(v);
   };
 
-  const fetchData = (query: {
-    page?: number;
-    size?: number;
-    category?: string;
-  }) => {
-    const { blogs, page, category, size, total } = getBlogs(query);
-
-    setData(blogs);
-    setPage(page);
-    setCategory(category);
-    setPageSize(size);
-    setTotal(total);
-  };
 
   return (
-    <>
-      <Background />
+    <RootLayout>
+      <BackgroundBlog />
       <main>
         <section className='mx-auto mt-[40px] flex w-full flex-col px-[20px] md:mt-[100px] md:max-w-[1150px]'>
           <div
             className='flex cursor-pointer flex-col-reverse gap-[16px] md:flex-row md:justify-between md:gap-[50px] lg:gap-[100px]'
-            onClick={() => router.push(`/blog/${firstBlog?.id}`)}
+            onClick={() => router.push(`/blog/${items.top.slug}`)}
           >
             <div className='flex w-full flex-1 flex-col gap-[16px] md:max-w-[460px]'>
               <Tag className='hidden md:block'>
-                {getCategoryTitle(firstBlog?.category)}
+                {items.top.tag}
               </Tag>
               <Link
-                href={`/blog/${firstBlog?.id}`}
+                href={`/blog/${items.top.slug}`}
                 className='bg-gradient-to-b from-[#FFFFFF] to-[#AF47FF] bg-clip-text text-[32px] font-[600] leading-[36.8px] text-transparent md:text-[44px] md:leading-[50.6px]'
               >
-                {firstBlog?.title}
+                {items.top.title}
               </Link>
               <p className='text-[16px] leading-[20.8px] md:text-[19px] md:leading-[24.7px]'>
-                {firstBlog?.description}
+                {items.top.description}
               </p>
-              <BlogFooter data={firstBlog!} className='mt-[4px]' />
+              <BlogFooter data={items.top} className='mt-[4px]' />
             </div>
             <div className='flex flex-1 flex-col gap-[16px]'>
-              <Tag className='md:hidden'>Announcement</Tag>
+              <Tag className='md:hidden'>{items.top.tag}</Tag>
               <div className='h-fit overflow-hidden rounded-[7px]'>
                 <Image
-                  src={firstBlog?.image || ''}
+                  src={items.top.cover}
                   alt=''
                   className='w-full'
                   width={550}
@@ -134,33 +103,41 @@ export default function BlogPage() {
 
           <div className='mt-[70px] flex w-full overflow-x-scroll md:mt-[100px] md:justify-center md:overflow-auto'>
             <div className='flex gap-[12px]'>
-              {LIST_CATEGORY &&
-                LIST_CATEGORY.map((item, index) => (
+              {['All Categories', ...props?.categories!].map((item: any, index: any) => (
                   <Button
-                    selected={item.value === category}
-                    onClick={() => handleCategoryChange(item.value)}
+                    selected={item === currentCategory}
+                    onClick={() => handleCategoryChange(item)}
                     key={index}
                   >
-                    {item.title}
+                    {item}
                   </Button>
                 ))}
             </div>
           </div>
           <div className='mx-auto mt-[32px] grid grid-cols-1 justify-center gap-x-[30px] gap-y-[40px] md:mt-[74px] md:grid-cols-2 md:gap-y-[76px] lg:grid-cols-3'>
-            {data &&
-              data.map((blog: IBlog, index) => (
+            {items?.items?.map((blog: any, index: any) => (
                 <BlogItem data={blog} key={index} />
-              ))}
+            ))}
           </div>
-          <Pagination
-            page={page}
-            perPage={perPage}
-            itemCount={total}
-            onPageChange={handlePageChange}
-            className='mt-[70px] border-t-[1px] border-[#FFFFFF33] pt-[20px] md:mt-[84px]'
-          />
+          {/*<Pagination*/}
+          {/*  page={1}*/}
+          {/*  perPage={10}*/}
+          {/*  itemCount={123}*/}
+          {/*  onPageChange={handlePageChange}*/}
+          {/*  className='mt-[70px] border-t-[1px] border-[#FFFFFF33] pt-[20px] md:mt-[84px]'*/}
+          {/*/>*/}
         </section>
       </main>
-    </>
+    </RootLayout>
   );
+}
+
+export const getStaticProps = async () => {
+  const blogs = await getBlogs();
+
+  return {
+    props: {
+      ...blogs
+    },
+  };
 }

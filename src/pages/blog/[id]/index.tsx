@@ -2,31 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import * as React from 'react';
 
-import { getCategoryTitle } from '@/lib/utils';
-
 import BlogFooter from '@/components/blog/footer';
 import BlogItem from '@/components/blog/item';
 import GradientText from '@/components/common/GradientText';
 import Tag from '@/components/common/Tag';
 
-import Background from '@/app/blog/back';
-import { getBlogById } from '@/helper/endpoints/blog/apis';
-
-import Blogs from '../data.json';
-
 import ArrowLeft from '~/svg/ArrowLeft.svg';
+import BackgroundBlog from "@/components/layout/back_blog";
+import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
+import RootLayout from "@/components/layout/layout";
 
-const BlogPostPage = ({ params }: { params: { id: string } }) => {
-  const id = params.id;
-  const data = getBlogById({
-    id,
-  });
-
-  const { category, title, description, image, content } = data;
+const BlogPostPage = (data: any) => {
+  const { title, description, cover, content, tag } = data.blog;
 
   return (
-    <>
-      <Background />
+    <RootLayout>
+      <BackgroundBlog />
       <main>
         <section className='relative mx-auto w-full max-w-[800px] px-5'>
           <Link href='/blog'>
@@ -39,23 +30,23 @@ const BlogPostPage = ({ params }: { params: { id: string } }) => {
               Blog
             </Link>
             <span>/</span>
-            <span>{data.title}</span>
+            <span>{title}</span>
           </div>
 
           <div className='mt-[40px] flex flex-col gap-4'>
-            <Tag>{getCategoryTitle(category)}</Tag>
+            <Tag>{tag}</Tag>
             <GradientText className='text-[32px] font-[600] leading-[36.8px] md:text-[44px] md:leading-[50.6px]'>
               {title}
             </GradientText>
             <p className='text-[16px] leading-[20.8px] md:text-[19px] md:leading-[24.7px]'>
               {description}
             </p>
-            <BlogFooter data={data} className='mt-[4px]' />
+            <BlogFooter data={data.blog} className='mt-[4px]' />
           </div>
 
           <div className='mt-[38px] h-fit w-full overflow-hidden rounded-[7px] md:mt-8'>
             <Image
-              src={image}
+              src={cover}
               alt=''
               className='w-full'
               width={550}
@@ -64,27 +55,52 @@ const BlogPostPage = ({ params }: { params: { id: string } }) => {
           </div>
 
           <div
-            className='mt-10 md:mt-8'
+            className='mt-10 md:mt-8 blog-post'
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
 
           <div className='my-10 h-[1px] w-full bg-[#FFFFFF33] md:my-20'></div>
 
-          <div className='flex flex-col gap-11'>
+          {!!data.related.length && (<div className='flex flex-col gap-11'>
             <GradientText className='text-[32px] font-[600] leading-[36.8px] md:text-[44px] md:leading-[50.6px]'>
               Related Articles
             </GradientText>
             <div className='grid grid-cols-1 justify-center gap-x-[30px] gap-y-[32px] md:grid-cols-2 lg:grid-cols-3'>
-              {Blogs &&
-                Blogs.slice(0, 3).map((blog, index) => (
-                  <BlogItem data={blog} showDescription={false} key={index} />
+              {data.related.map((b: any, index: any) => (
+                  <BlogItem data={b} showDescription={false} key={index} />
                 ))}
             </div>
-          </div>
+          </div>)}
         </section>
       </main>
-    </>
+    </RootLayout>
   );
 };
+
+export const getStaticPaths = async () => {
+  const blogs = await getBlogs();
+  return {
+    paths: blogs.items.map((blog: any) => ({
+      params: {
+        id: blog.slug,
+      }
+    })),
+    fallback: true
+  }
+}
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export const getStaticProps = async ({params: {id}}) => {
+  const blogs = await getBlogs(true);
+  const blog = blogs.items.find((blog: any) => blog.slug === id);
+  const related = blogs.items.filter((b: any) => b.tag === blog?.tag && b.slug !== blog?.slug).slice(0, 3);
+
+  return {
+    props: {
+      blog,
+      related
+    },
+  };
+}
 
 export default BlogPostPage;
