@@ -101,7 +101,7 @@ export default function BlogPage(props: any) {
             </div>
           </div>
 
-          <div className='mt-[70px] flex w-full overflow-x-scroll md:mt-[100px] md:justify-center md:overflow-auto'>
+          <div className='scrollbar mt-[70px] flex w-full overflow-x-scroll md:mt-[100px] md:justify-center md:overflow-auto'>
             <div className='flex gap-[12px]'>
               {['All Categories', ...props?.categories!].map((item: any, index: any) => (
                   <Button

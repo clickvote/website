@@ -11,21 +11,42 @@ import {
   YoutubeSvg,
 } from '@/components/svgs';
 
+import { extraUrls } from '@/constant/config';
+
 import SuperFine from '~/svg/SuperFine.svg';
 
-const FootLink = ({ title, url }: { title: string; url?: string }) => (
+const FootLink = ({
+  title,
+  url = extraUrls.github,
+  target = '_self',
+}: {
+  title: string;
+  url?: string;
+  target?: string;
+}) => (
   <Link
     href={url || '/'}
+    target={target}
     className='cursor-pointer transition duration-100 ease-in hover:text-[#00D5FF]'
   >
     {title}
   </Link>
 );
 
-const SocialIcon = ({ children }: { children?: React.ReactNode }) => (
-  <div className='cursor-pointer fill-[#FFFFFF50] transition duration-100 ease-in hover:fill-[#FFF]'>
+const SocialIcon = ({
+  children,
+  url,
+}: {
+  children?: React.ReactNode;
+  url?: string;
+}) => (
+  <a
+    href={url}
+    target='__blank'
+    className='cursor-pointer fill-[#FFFFFF50] transition duration-100 ease-in hover:fill-[#FFF]'
+  >
     {children}
-  </div>
+  </a>
 );
 
 export default function Footer() {
@@ -46,7 +67,11 @@ export default function Footer() {
             <FootLink title='OSS Friends' />
           </div>
           <div className='flex w-full max-w-[174px] flex-col gap-2'>
-            <FootLink title='Documentation' />
+            <FootLink
+              title='Documentation'
+              url={extraUrls.doc}
+              target='_blank'
+            />
             <FootLink title='Roadmap' />
             <FootLink title='Providers' />
             <FootLink title='Handbook' />
@@ -67,19 +92,19 @@ export default function Footer() {
           <GithubBtn className='w-fit cursor-pointer md:hidden' />
 
           <div className='flex gap-[25px]'>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.github}>
               <GithubSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.linkedin}>
               <LinkedinSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.youtube}>
               <YoutubeSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.discord}>
               <DiscordSvg width={24} height={24} />
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon url={extraUrls.twitter}>
               <SocialXSvg width={24} height={24} />
             </SocialIcon>
           </div>

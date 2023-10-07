@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { extraUrls } from '@/constant/config';
+
 export default function Service() {
   return (
     <div className='mt-[90px] md:mt-[81px]'>
@@ -14,9 +16,13 @@ export default function Service() {
           <p className='mt-[7px] text-[19px] font-[400] leading-[25px] text-[#A7A7A7]'>
             Run locally with docker-compose
           </p>
-          <button className='bg-gradient10 mt-[34px] rounded-[7px] border-[1px] border-[#FFFFFF66] px-[20px] py-[16px] text-[18px] leading-[28px] text-white transition-all duration-100 ease-in hover:opacity-80 md:px-[51px]'>
+          <a
+            href={extraUrls.doc}
+            target='__blank'
+            className='bg-gradient10 mx-auto mt-[34px] block w-fit rounded-[7px] border-[1px] border-[#FFFFFF66] px-[20px] py-[16px] text-[18px] leading-[28px] text-white transition-all duration-100 ease-in hover:opacity-80 md:px-[51px]'
+          >
             Read Docs
-          </button>
+          </a>
         </div>
         <div className='bg-gradient12 rounded-[12px] border-[1px] border-[#9914FF66] px-[68px] py-[71px] text-center'>
           <p className='text-[24px] font-[600] leading-[31px] text-white'>

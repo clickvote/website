@@ -78,7 +78,10 @@ export default function Code() {
   };
 
   return (
-    <div className='w-screen px-[20px]' style={{ overflow: 'overlay' }}>
+    <div
+      className='scrollbar w-screen px-[20px]'
+      style={{ overflow: 'overlay' }}
+    >
       <div className='bg-gradient8 m-auto flex h-[600px] w-[1000px] rounded-[7px] border-[1px] border-[#FFFFFF2B]'>
         <div className='h-full w-[645px] border-r-[1px] border-[#FFFFFF2B]'>
           <div className='flex h-[60px] w-full items-center gap-[10px] border-b-[1px] border-[#FFFFFF2B] px-[30px] py-[15px]'>
