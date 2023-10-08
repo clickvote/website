@@ -6,6 +6,7 @@ import GradientText from '@/components/common/GradientText';
 import SwitchButton from '@/components/common/SwitchButton';
 import PricingPlan from '@/components/pricing/Plan';
 import BackgroundBlog from "@/components/layout/back_blog";
+import RootLayout from "@/components/layout/layout";
 
 const PricePlans = [
   {
@@ -208,7 +209,7 @@ const Faqs = [
 const PricingPage = () => {
   const [status, setStatus] = React.useState(true);
   return (
-    <>
+    <RootLayout>
       <BackgroundBlog />
       <main>
         <section className='mx-auto mt-[40px] flex w-fit flex-col items-center px-5 md:mt-[100px]'>
@@ -265,7 +266,7 @@ const PricingPage = () => {
           </div>
         </section>
       </main>
-    </>
+    </RootLayout>
   );
 };
 
