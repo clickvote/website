@@ -1,5 +1,3 @@
-
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -30,7 +28,7 @@ const BlogItem = ({ data, showDescription = true }: BlogItemProps) => {
       <Image
         src={data.cover}
         alt=''
-        className='w-full rounded-[10px] md:w-[350px] md:h-[194px]'
+        className='h-[194px] w-full rounded-[10px] bg-cover object-cover md:w-[350px]'
         width={350}
         height={194}
       />
