@@ -93,7 +93,7 @@ export default function BlogPage(props: any) {
                 <Image
                   src={items.top.cover}
                   alt=''
-                  className='w-full'
+                  className='h-[210px] w-full object-cover md:h-[385px] md:w-[550px]'
                   width={550}
                   height={385}
                 />
