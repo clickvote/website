@@ -70,7 +70,7 @@ const BlogPostPage = (data: any) => {
             </GradientText>
             <div className='grid grid-cols-1 justify-center gap-x-[30px] gap-y-[32px] md:grid-cols-2 lg:grid-cols-3'>
               {data.related.map((b: any, index: any) => (
-                  <BlogItem data={b} showDescription={false} key={index} />
+                  <BlogItem data={b} showDescription={false} key={index} height={164} />
                 ))}
             </div>
           </div>)}
