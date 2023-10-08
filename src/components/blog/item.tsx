@@ -12,7 +12,11 @@ import { IBlog } from '@/types/interfaces/IBlog';
 
 type BlogItemProps = any;
 
-const BlogItem = ({ data, showDescription = true }: BlogItemProps) => {
+const BlogItem = ({
+  data,
+  showDescription = true,
+  height = 194,
+}: BlogItemProps) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -28,9 +32,12 @@ const BlogItem = ({ data, showDescription = true }: BlogItemProps) => {
       <Image
         src={data.cover}
         alt=''
-        className='h-[194px] w-full rounded-[10px] bg-cover object-cover md:w-[350px]'
+        className='w-full rounded-[10px] bg-cover object-cover md:w-[350px]'
         width={350}
         height={194}
+        style={{
+          height: `${height}px`,
+        }}
       />
       <div className='flex flex-col gap-[16px]'>
         <Link
