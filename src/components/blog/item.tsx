@@ -30,7 +30,7 @@ const BlogItem = ({ data, showDescription = true }: BlogItemProps) => {
       <Image
         src={data.cover}
         alt=''
-        className='w-full rounded-[10px] md:w-[350px]'
+        className='w-full rounded-[10px] md:w-[350px] md:h-[194px]'
         width={350}
         height={194}
       />
