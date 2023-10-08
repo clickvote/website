@@ -1,10 +1,9 @@
-
-
 import * as React from 'react';
 
-import { cn, formatStarCount } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 import { extraUrls } from '@/constant/config';
+import {GlobalContext} from "@/helper/context/global.context";
 
 import Github from '~/svg/Github.svg';
 
@@ -13,17 +12,8 @@ type Props = {
 };
 
 export default function GithubBtn({ className }: Props) {
-  const [repoStars, setRepoStars] = React.useState(formatStarCount(1024));
-
-  React.useEffect(() => {
-    fetch(extraUrls.apiGithub).then(async (response) => {
-      const data = await response.json();
-
-      if (data && data.stargazers_count) {
-        setRepoStars(formatStarCount(data.stargazers_count));
-      }
-    });
-  }, []);
+  const {stars} = React.useContext(GlobalContext);
+  const [repoStars] = React.useState(stars);
 
   return (
     <a

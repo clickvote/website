@@ -1,12 +1,15 @@
 
+import {GetStaticProps} from "next";
 import * as React from 'react';
 
 import Accordion from '@/components/Accordion';
 import GradientText from '@/components/common/GradientText';
 import SwitchButton from '@/components/common/SwitchButton';
-import PricingPlan from '@/components/pricing/Plan';
 import BackgroundBlog from "@/components/layout/back_blog";
 import RootLayout from "@/components/layout/layout";
+import PricingPlan from '@/components/pricing/Plan';
+
+import {getGithubStars} from "@/helper/endpoints/github/get.github.stars";
 
 const PricePlans = [
   {
@@ -206,10 +209,10 @@ const Faqs = [
   },
 ];
 
-const PricingPage = () => {
+const PricingPage = ({stars}: {stars: number}) => {
   const [status, setStatus] = React.useState(true);
   return (
-    <RootLayout>
+    <RootLayout stars={stars}>
       <BackgroundBlog />
       <main>
         <section className='mx-auto mt-[40px] flex w-fit flex-col items-center px-5 md:mt-[100px]'>
@@ -269,5 +272,15 @@ const PricingPage = () => {
     </RootLayout>
   );
 };
+
+export const getStaticProps: GetStaticProps = async () => {
+  const stars = await getGithubStars();
+  return {
+    props: {
+      stars
+    },
+    revalidate: 3600
+  }
+}
 
 export default PricingPage;

@@ -13,6 +13,7 @@ import BackgroundBlog from "@/components/layout/back_blog";
 import RootLayout from "@/components/layout/layout";
 
 import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
+import {getGithubStars} from "@/helper/endpoints/github/get.github.stars";
 
 const blogsPerPage = 1;
 
@@ -64,7 +65,7 @@ export default function BlogPage(props: any) {
 
 
   return (
-    <RootLayout>
+    <RootLayout stars={props.stars}>
       <NextSeo
           title="Clickvote - Blog"
           description="Learn more about click vote and how it works"
@@ -138,10 +139,12 @@ export default function BlogPage(props: any) {
 
 export const getStaticProps = async () => {
   const blogs = await getBlogs();
+  const stars = await getGithubStars();
 
   return {
     props: {
-      ...blogs
+      ...blogs,
+      stars
     },
     revalidate: 3600
   };

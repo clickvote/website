@@ -6,13 +6,17 @@ import Subscribe from '@/components/landing/Subscribe';
 import Navbar from '@/components/Navbar';
 import ScrollToTop from '@/components/ScrollToTop';
 
+import {GlobalContext} from "@/helper/context/global.context";
+
 export default function RootLayout({
   children,
+  stars
 }: {
   children: React.ReactNode;
+  stars: number;
 }) {
   return (
-      <>
+      <GlobalContext.Provider value={{stars}}>
           <DefaultSeo
               title='Clickvote - Like, Upvote And Review Any Context'
               description='Seamlessly Integrate Like, Upvote, and Review Components into Your App with React / Angular / Svelte / Vue'
@@ -48,6 +52,6 @@ export default function RootLayout({
           <Footer />
         </div>
         <ScrollToTop />
-      </>
+      </GlobalContext.Provider>
   );
 }

@@ -11,6 +11,7 @@ import BackgroundBlog from "@/components/layout/back_blog";
 import RootLayout from "@/components/layout/layout";
 
 import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
+import {getGithubStars} from "@/helper/endpoints/github/get.github.stars";
 
 import ArrowLeft from '~/svg/ArrowLeft.svg';
 
@@ -21,7 +22,7 @@ const BlogPostPage = (data: any) => {
   const { title, description, cover, content, tag, slug } = data.blog;
 
   return (
-    <RootLayout>
+    <RootLayout stars={data.stars}>
       <NextSeo
           title={`Clickvote - ${title}`}
           description={description}
@@ -111,14 +112,17 @@ export const getStaticPaths = async () => {
 // @ts-ignore
 export const getStaticProps = async ({params: {id}}) => {
   const blogs = await getBlogs(true);
+  const stars = await getGithubStars();
   const blog = blogs.items.find((blog: any) => blog.slug === id);
   const related = blogs.items.filter((b: any) => b.tag === blog?.tag && b.slug !== blog?.slug).slice(0, 3);
 
   return {
     props: {
       blog,
-      related
+      related,
+      stars
     },
+    revalidate: 3600
   };
 }
 
