@@ -5,20 +5,27 @@ import NextImage from '@/components/NextImage';
 import Hashtag from '~/svg/Hashtag.svg';
 import {useCallback, useState} from "react";
 import axios from "axios";
+import {Oval} from "react-loader-spinner";
 
 export default function Subscribe() {
     const [email, setEmail] = useState('');
     const [complete, setComplete] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [text, setText] = useState('');
     const submitForm = useCallback(async (e: any) => {
         e.preventDefault();
         if (email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-            const {data} = await axios.post('/api/subscribe', {
-                email
+            setLoading(true);
+            const {data} = await axios.post('https://substackapi.com/api/subscribe', {
+                email: email, domain: new URL(process?.env?.NEXT_PUBLIC_SUBSTACK_NEWSLETTER_URL!).hostname
+            }, {
+                headers: {
+                    "Cache-Length": 0
+                }
             });
-
+            setLoading(false);
             setComplete(true);
-            if (data.confirm) {
+            if (data?.requires_confirmation) {
                 setText('Thank you, we have sent you a confirmation email');
             }
             else {
@@ -62,8 +69,23 @@ export default function Subscribe() {
                                 placeholder='Your email'
                             />
                         </div>
-                        <button className='w-full max-w-[330px] rounded-[7px] border-[1px] border-white bg-white px-[48px] py-[16px] text-[16px] leading-[25.6px] text-black transition-all hover:bg-transparent hover:text-white md:w-fit'>
-                            Subscribe
+                        <button className='relative w-full max-w-[330px] rounded-[7px] border-[1px] border-white bg-white px-[48px] py-[16px] text-[16px] leading-[25.6px] text-black transition-all md:w-fit'>
+                            {loading ? (
+                                <>
+                                    <div className="invisible">Subscribe</div>
+                                    <div className="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]">
+                                        <Oval
+                                            height={35}
+                                            width={35}
+                                            color="#56257C"
+                                            visible={true}
+                                            ariaLabel='oval-loading'
+                                            secondaryColor="#56257C"
+                                            strokeWidth={5}
+                                            strokeWidthSecondary={2}
+                                        />
+                                    </div>
+                                </>) : 'Subscribe'}
                         </button>
                         </>)}
                     </div>

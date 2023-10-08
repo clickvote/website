@@ -4,7 +4,7 @@ import {JSDOM} from "jsdom";
 import dayjs from "dayjs";
 
 export const getBlogs = async (showContent = false) => {
-    const {data} = await axios.get(process?.env?.SUBSTACK_NEWSLETTER_URL + `/feed?cache=${Math.random()}`);
+    const {data} = await axios.get(process?.env?.NEXT_PUBLIC_SUBSTACK_NEWSLETTER_URL + `/feed?cache=${Math.random()}`);
     const parsedXml = await parseStringPromise(data);
 
     const items = [];
