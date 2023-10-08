@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { NextSeo } from 'next-seo';
 import * as React from 'react';
 import {useMemo, useState} from "react";
 
@@ -10,7 +11,6 @@ import BlogItem from '@/components/blog/item';
 import Tag from '@/components/common/Tag';
 import BackgroundBlog from "@/components/layout/back_blog";
 import RootLayout from "@/components/layout/layout";
-import Pagination from '@/components/Pagination';
 
 import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
 
@@ -65,6 +65,10 @@ export default function BlogPage(props: any) {
 
   return (
     <RootLayout>
+      <NextSeo
+          title="Clickvote - Blog"
+          description="Learn more about click vote and how it works"
+      />
       <BackgroundBlog />
       <main>
         <section className='mx-auto mt-[40px] flex w-full flex-col px-[20px] md:mt-[100px] md:max-w-[1150px]'>

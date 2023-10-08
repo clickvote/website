@@ -1,25 +1,40 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import {NextSeo} from "next-seo";
 import * as React from 'react';
 
 import BlogFooter from '@/components/blog/footer';
 import BlogItem from '@/components/blog/item';
 import GradientText from '@/components/common/GradientText';
 import Tag from '@/components/common/Tag';
+import BackgroundBlog from "@/components/layout/back_blog";
+import RootLayout from "@/components/layout/layout";
+
+import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
 
 import ArrowLeft from '~/svg/ArrowLeft.svg';
-import BackgroundBlog from "@/components/layout/back_blog";
-import {getBlogs} from "@/helper/endpoints/blog/get.blogs";
-import RootLayout from "@/components/layout/layout";
 
 const BlogPostPage = (data: any) => {
   if (!data.blog) {
     return <></>;
   }
-  const { title, description, cover, content, tag } = data.blog;
+  const { title, description, cover, content, tag, slug } = data.blog;
 
   return (
     <RootLayout>
+      <NextSeo
+          title={`Clickvote - ${title}`}
+          description={description}
+          canonical={process.env.NEXT_PUBLIC_SUBSTACK_NEWSLETTER_URL + '/p/' + slug}
+          openGraph={{
+            images: [
+                {
+                    url: cover,
+                    alt: title,
+                }
+            ]
+          }}
+      />
       <BackgroundBlog />
       <main>
         <section className='relative md:mx-auto w-full max-w-[800px] mx-5'>
