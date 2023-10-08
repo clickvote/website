@@ -51,7 +51,7 @@ const BlogPostPage = (data: any) => {
             <Image
               src={cover}
               alt=''
-              className='w-full'
+              className='h-[475px] w-full object-cover'
               width={550}
               height={385}
             />
