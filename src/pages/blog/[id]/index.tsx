@@ -22,7 +22,7 @@ const BlogPostPage = (data: any) => {
     <RootLayout>
       <BackgroundBlog />
       <main>
-        <section className='relative mx-auto w-full max-w-[800px] px-5'>
+        <section className='relative md:mx-auto w-full max-w-[800px] mx-5'>
           <Link href='/blog'>
             <div className='absolute hidden h-8 w-8 items-center justify-center rounded-full bg-gray-800 transition-colors duration-200 hover:text-[#00D5FF] lg:-ml-24 lg:-mt-1 lg:flex'>
               <ArrowLeft className='h-3 w-3' />
@@ -51,7 +51,7 @@ const BlogPostPage = (data: any) => {
             <Image
               src={cover}
               alt=''
-              className='w-full'
+              className='h-[210px] w-full object-cover md:h-[475px]'
               width={550}
               height={385}
             />
@@ -70,7 +70,7 @@ const BlogPostPage = (data: any) => {
             </GradientText>
             <div className='grid grid-cols-1 justify-center gap-x-[30px] gap-y-[32px] md:grid-cols-2 lg:grid-cols-3'>
               {data.related.map((b: any, index: any) => (
-                  <BlogItem data={b} showDescription={false} key={index} />
+                  <BlogItem data={b} showDescription={false} key={index} height={164} />
                 ))}
             </div>
           </div>)}

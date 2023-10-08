@@ -114,7 +114,7 @@ export default function BlogPage(props: any) {
                 ))}
             </div>
           </div>
-          <div className='mx-auto mt-[32px] grid grid-cols-1 justify-center gap-x-[30px] gap-y-[40px] md:mt-[74px] md:grid-cols-2 md:gap-y-[76px] lg:grid-cols-3'>
+          <div className='mx-auto mt-[32px] grid w-full grid-cols-1 justify-center gap-x-[30px] gap-y-[40px] md:mt-[74px] md:w-auto md:grid-cols-2 md:gap-y-[76px] lg:grid-cols-3'>
             {items?.items?.map((blog: any, index: any) => (
                 <BlogItem data={blog} key={index} />
             ))}
