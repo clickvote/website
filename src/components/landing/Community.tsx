@@ -33,7 +33,7 @@ export default function Community() {
   return (
     <div className='mt-[90px] flex flex-col items-center md:mt-[170px]'>
       <div className='bg-gradient3 bg-clip-text text-[32px] font-[600] leading-[39px] text-transparent md:text-[44px] md:leading-[57.2px]'>
-        Bulit by the
+        Built by the
         <br className='md:hidden' /> community
       </div>
       <p className='mx-[13px] mt-[24px] max-w-[872px] text-center text-[17px] font-[400] leading-[23px] text-[#A7A7A7] md:text-[19px] md:leading-[31.35px]'>
