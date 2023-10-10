@@ -23,7 +23,7 @@ const LikeButton: FC<{className: string}> = (top) => {
     return (
         <ClickVoteProvider value={{ apiUrl: 'socket.clickvote.dev', publicKey: 'pb_Q49Jy1gBQIWI0hqhEk5br7nXCNmPs3vj', userId: visitor }}>
             <ClickVoteComponent id="main-page" voteTo={window.location.href}>
-                {(props) => <LikeBtn className={top.className} {...props} />}
+                {(props) => <LikeBtn moreClass={top.className} {...props} />}
             </ClickVoteComponent>
         </ClickVoteProvider>
     );
