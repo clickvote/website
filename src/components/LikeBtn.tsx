@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 type Props = {
   className?: string;
-  moreClass: string;
+  moreClass?: string;
 };
 
 const Heart: FC<{className: string, voted: boolean}> = (props) => (
