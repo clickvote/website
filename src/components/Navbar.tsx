@@ -1,17 +1,19 @@
-
-
+import dynamic from 'next/dynamic'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import GithubBtn from '@/components/GithubBtn';
-import LikeBtn from '@/components/LikeBtn';
 import Logo from '@/components/Logo';
 
 import { extraUrls } from '@/constant/config';
 
 import Close from '~/svg/Close.svg';
 import Menu from '~/svg/Menu.svg';
+
+const LikeButton = dynamic(() => import('@/components/common/like.button'), {
+  ssr: false,
+})
 
 const menu = [
   {
@@ -47,7 +49,7 @@ const Navbar = () => {
       <nav className='relative z-50 flex max-w-full items-center justify-between p-[18px] md:px-[25px] md:py-[30px] lg:p-[50px]'>
         <div className='flex items-center gap-[20px] lg:gap-[30px]'>
           <Logo />
-          <LikeBtn className='hidden md:flex' />
+          <LikeButton />
         </div>
         <div className='flex items-center'>
           <div
@@ -86,7 +88,7 @@ const Navbar = () => {
                 ))}
               <div className='mt-[23px] flex justify-between md:mt-[0px]'>
                 <GithubBtn />
-                <LikeBtn className='md:hidden' />
+                <LikeButton className='md:hidden' />
               </div>
             </ul>
           </div>

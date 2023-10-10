@@ -17,9 +17,11 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
+    "@clickvote/react": "^0.0.8",
     "@codemirror/lang-javascript": "^6.2.1",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-react": "^2.2.1",
+    "@fingerprintjs/fingerprintjs": "^3.4.2",
     "@lezer/highlight": "^1.1.6",
     "@lucasmogari/react-pagination": "^1.1.3",
     "@react-three/drei": "^9.86.3",
