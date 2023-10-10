@@ -4,7 +4,7 @@ import {FC, useCallback, useEffect, useState} from "react";
 
 import {LikeBtn} from "@/components/LikeBtn";
 
-const LikeButton: FC<any> = () => {
+const LikeButton: FC<{className: string}> = (top) => {
     const [visitor, setVisitor] = useState('');
     useEffect(() => {
         load();
@@ -23,7 +23,7 @@ const LikeButton: FC<any> = () => {
     return (
         <ClickVoteProvider value={{ apiUrl: 'socket.clickvote.dev', publicKey: 'pb_Q49Jy1gBQIWI0hqhEk5br7nXCNmPs3vj', userId: visitor }}>
             <ClickVoteComponent id="main-page" voteTo={window.location.href}>
-                {(props) => <LikeBtn {...props} />}
+                {(props) => <LikeBtn className={top.className} {...props} />}
             </ClickVoteComponent>
         </ClickVoteProvider>
     );
