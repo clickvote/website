@@ -4,7 +4,7 @@ import {FC, useCallback, useEffect, useState} from "react";
 
 import {LikeBtn} from "@/components/LikeBtn";
 
-const LikeButton: FC<{className: string}> = (top) => {
+const LikeButton: FC<{className?: string}> = (top) => {
     const [visitor, setVisitor] = useState('');
     useEffect(() => {
         load();
