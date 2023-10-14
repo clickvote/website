@@ -37,7 +37,7 @@ export default function Community() {
         <br className='md:hidden' /> community
       </div>
       <p className='mx-[13px] mt-[24px] max-w-[872px] text-center text-[17px] font-[400] leading-[23px] text-[#A7A7A7] md:text-[19px] md:leading-[31.35px]'>
-        Open-source is in the heart of Novu. We keep all the source code and
+        Open-source is in the heart of Clickvote. We keep all the source code and
         work publicly available. Join our community driven project with over
         3,000+ developers from around the world who contribute code and help
         building the modern notification infrastructure.
