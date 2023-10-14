@@ -16,6 +16,7 @@ const PricePlans =  [
     title: 'Free',
     price: '$0 / mo',
     description: 'Perfect for testing and small projects',
+    selfhosted: false,
     content: [
       { title: '1,000 reactions per month', support: true },
       { title: 'Maximum 1,000 views counts per context', support: true },
@@ -39,6 +40,7 @@ const PricePlans =  [
     title: 'Hero',
     price: '$50 / mo',
     description: 'Perfect for mid size projects',
+    selfhosted: false,
     content: [
       { title: '10,000 reactions per month', support: true },
       { title: 'Maximum 5,000 views counter per context', support: true },
@@ -61,6 +63,7 @@ const PricePlans =  [
     title: 'Legend',
     price: '$100 / mo',
     description: 'Perfect for large projects',
+    selfhosted: false,
     content: [
       { title: '50,000 reactions per month', support: true },
       { title: 'Maximum 25,000 views counter per context', support: true },
@@ -83,6 +86,7 @@ const PricePlans =  [
     title: 'Enterprise',
     description: 'Perfect for enterprise grade projects',
     price: 'Contact us',
+    selfhosted: false,
     content: [
       { title: 'SSO Support', support: true },
       { title: 'Multi-tenancy', support: true },
@@ -97,23 +101,27 @@ const PricePlans =  [
 
 const PricePlans1 = [
   {
-    title: 'On-Premises',
-    description: 'Use ClikcVote for your applications.',
-    price: 'Contact us',
-    actionTitle: 'Contact us',
+    title: 'Self Hosted',
+    description: 'Self hosted version of ClickVote',
+    price: '$0',
+    actionTitle: 'Get Started Guide',
+    selfhosted: true,
     content: [
-      {
-        title: 'Unlimited Events',
-        support: true,
-      },
-      {
-        title: 'MIT License',
-        support: true,
-      },
-      {
-        title: 'Free',
-        support: true,
-      },
+      { title: 'Unlimited reactions per month', support: true },
+      { title: 'Unlimited view counts per button', support: true },
+      { title: 'Unlimited domains', support: true },
+      { title: 'Unlimited environment', support: true },
+      { title: 'Pro analytics - Unlimited days log retention', support: true },
+      { title: 'Unlimited Integrations', support: true },
+      { title: 'All features included', support: true },
+      { title: 'Community Support', support: true },
+      { title: 'API Access', support: true },
+      { title: 'Applications ML insights', support: false },
+      { title: 'Public fingerprint support', support: false },
+      { title: 'Pro reactions', support: false },
+      { title: 'Live support', support: false },
+      { title: 'Customer Success', support: false },
+      { title: 'Enterprise features', support: false }
     ],
     defaultAction: true,
   },
@@ -176,6 +184,7 @@ const PricingPage = ({stars}: {stars: number}) => {
               <PricingPlan
                 title={plan.title}
                 description={plan.description}
+                selfhosted={plan.selfhosted}
                 price={plan.price}
                 actionTitle={plan.actionTitle}
                 content={plan.content}

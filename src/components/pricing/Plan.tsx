@@ -8,6 +8,7 @@ import Close from '~/svg/Close.svg';
 type Props = {
   title: string;
   description: string;
+  selfhosted: boolean;
   price: string;
   actionTitle: string;
   defaultAction?: boolean;
@@ -25,6 +26,7 @@ const PricingPlan = ({
   actionTitle,
   content,
   defaultAction = false,
+  selfhosted,
   className = '',
 }: Props) => {
   return (
@@ -50,7 +52,7 @@ const PricingPlan = ({
               !defaultAction,
           })}
         >
-          <a href="https://app.clickvote.dev" target="_blank" className='text-[18px] leading-[28.8px] text-[500]'>
+          <a href={selfhosted ? "https://docs.clickvote.dev/quickstart" : "https://app.clickvote.dev"} target="_blank" className='text-[18px] leading-[28.8px] text-[500]'>
             {actionTitle}
           </a>
         </button>
