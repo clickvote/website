@@ -1,14 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
 
-import { getCategoryTitle } from '@/lib/utils';
-
 import BlogFooter from '@/components/blog/footer';
 import Tag from '@/components/common/Tag';
 
-import { IBlog } from '@/types/interfaces/IBlog';
 
 type BlogItemProps = any;
 
@@ -29,7 +25,7 @@ const BlogItem = ({
       onClick={handleClick}
     >
       <Tag>{data.tag}</Tag>
-      <Image
+      <img
         src={data.cover}
         alt=''
         className='w-full rounded-[10px] bg-cover object-cover md:w-[350px]'

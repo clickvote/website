@@ -1,5 +1,3 @@
-
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { NextSeo } from 'next-seo';
@@ -95,7 +93,7 @@ export default function BlogPage(props: any) {
             <div className='flex flex-1 flex-col gap-[16px]'>
               <Tag className='md:hidden'>{items.top.tag}</Tag>
               <div className='h-fit overflow-hidden rounded-[7px]'>
-                <Image
+                <img
                   src={items.top.cover}
                   alt=''
                   className='h-[210px] w-full object-cover md:h-[385px] md:w-[550px]'

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import {NextSeo} from "next-seo";
 import * as React from 'react';
@@ -64,7 +63,7 @@ const BlogPostPage = (data: any) => {
           </div>
 
           <div className='mt-[38px] h-fit w-full overflow-hidden rounded-[7px] md:mt-8'>
-            <Image
+            <img
               src={cover}
               alt=''
               className='h-[210px] w-full object-cover md:h-[475px]'
