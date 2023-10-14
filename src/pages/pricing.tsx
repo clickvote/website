@@ -11,155 +11,88 @@ import PricingPlan from '@/components/pricing/Plan';
 
 import {getGithubStars} from "@/helper/endpoints/github/get.github.stars";
 
-const PricePlans = [
+const PricePlans =  [
   {
     title: 'Free',
-    description: 'Run locally with docker-compose',
     price: '$0 / mo',
-    actionTitle: 'Get Started',
+    description: 'Perfect for testing and small projects',
     content: [
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
+      { title: '1,000 reactions per month', support: true },
+      { title: 'Maximum 1,000 views counts per context', support: true },
+      { title: '1 domain', support: true },
+      { title: '2 environments (across all domains)', support: true },
+      { title: 'Basic analytics', support: true },
+      { title: 'All features included', support: true },
+      { title: 'Community Support', support: true },
+      { title: 'Applications ML insights', support: false },
+      { title: 'Public fingerprint support', support: false },
+      { title: 'API Access', support: false },
+      { title: 'Integrations', support: false },
+      { title: 'Pro reactions', support: false },
+      { title: 'Live support', support: false },
+      { title: 'Customer Success', support: false }
     ],
     defaultAction: true,
+    actionTitle: 'Get Started'
   },
   {
-    title: 'Indie Dev',
-    description: 'Run locally with docker-compose',
-    price: '$0 / mo',
-    actionTitle: 'Get Started for free',
+    title: 'Hero',
+    price: '$50 / mo',
+    description: 'Perfect for mid size projects',
     content: [
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
+      { title: '10,000 reactions per month', support: true },
+      { title: 'Maximum 5,000 views counter per context', support: true },
+      { title: '2 domains', support: true },
+      { title: '6 environments (across all domains)', support: true },
+      { title: 'Pro analytics (30 days log retention)', support: true },
+      { title: 'All features included', support: true },
+      { title: 'Live-support', support: true },
+      { title: '1 Integration (HTTP requests)', support: true },
+      { title: '2 Pro Reactions', support: true },
+      { title: 'API Access (10 requests per minute)', support: true },
+      { title: 'Applications ML insights', support: false },
+      { title: 'Public fingerprint support', support: false },
+      { title: 'Customer Success', support: false }
     ],
     defaultAction: false,
+    actionTitle: 'Get Started'
   },
   {
-    title: 'Business',
-    description: 'Run locally with docker-compose',
-    price: '$0 / mo',
-    actionTitle: 'Get Started for free',
+    title: 'Legend',
+    price: '$100 / mo',
+    description: 'Perfect for large projects',
     content: [
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
+      { title: '50,000 reactions per month', support: true },
+      { title: 'Maximum 25,000 views counter per context', support: true },
+      { title: '3 domains', support: true },
+      { title: '15 environments (across all domains)', support: true },
+      { title: 'Public fingerprint support', support: true },
+      { title: 'Pro analytics (90 days retention)', support: true },
+      { title: 'API Access (50 requests per minute)', support: true },
+      { title: 'All features included', support: true },
+      { title: '5 Integrations', support: true },
+      { title: 'Live-support', support: true },
+      { title: 'Customer Success', support: true },
+      { title: '4 Pro reactions', support: true },
+      { title: 'Applications ML insights', support: true }
     ],
     defaultAction: false,
+    actionTitle: 'Get Started'
   },
   {
     title: 'Enterprise',
-    description: 'Run locally with docker-compose',
+    description: 'Perfect for enterprise grade projects',
     price: 'Contact us',
-    actionTitle: 'Contact us',
     content: [
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: false,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
-      {
-        title: 'Email Support',
-        support: true,
-      },
+      { title: 'SSO Support', support: true },
+      { title: 'Multi-tenancy', support: true },
+      { title: 'Custom SLA’s', support: true },
+      { title: 'Enterprise Support', support: true },
+      { title: 'White labeling', support: true }
     ],
     defaultAction: false,
-  },
+    actionTitle: 'Contact us'
+  }
 ];
 
 const PricePlans1 = [
