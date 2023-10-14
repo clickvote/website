@@ -16,6 +16,7 @@ const PricePlans =  [
     title: 'Free',
     price: '$0 / mo',
     description: 'Perfect for testing and small projects',
+    contact: false,
     selfhosted: false,
     content: [
       { title: '1,000 reactions per month', support: true },
@@ -40,6 +41,7 @@ const PricePlans =  [
     title: 'Hero',
     price: '$50 / mo',
     description: 'Perfect for mid size projects',
+    contact: false,
     selfhosted: false,
     content: [
       { title: '10,000 reactions per month', support: true },
@@ -63,6 +65,7 @@ const PricePlans =  [
     title: 'Legend',
     price: '$100 / mo',
     description: 'Perfect for large projects',
+    contact: false,
     selfhosted: false,
     content: [
       { title: '50,000 reactions per month', support: true },
@@ -86,6 +89,7 @@ const PricePlans =  [
     title: 'Enterprise',
     description: 'Perfect for enterprise grade projects',
     price: 'Contact us',
+    contact: true,
     selfhosted: false,
     content: [
       { title: 'SSO Support', support: true },
@@ -105,6 +109,7 @@ const PricePlans1 = [
     description: 'Self hosted version of Clickvote',
     price: '$0',
     actionTitle: 'Get Started Guide',
+    contact: false,
     selfhosted: true,
     content: [
       { title: 'Unlimited reactions per month', support: true },
@@ -185,6 +190,7 @@ const PricingPage = ({stars}: {stars: number}) => {
                 title={plan.title}
                 description={plan.description}
                 selfhosted={plan.selfhosted}
+                contact={plan.contact}
                 price={plan.price}
                 actionTitle={plan.actionTitle}
                 content={plan.content}

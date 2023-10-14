@@ -9,6 +9,7 @@ type Props = {
   title: string;
   description: string;
   selfhosted: boolean;
+  contact: boolean;
   price: string;
   actionTitle: string;
   defaultAction?: boolean;
@@ -25,6 +26,7 @@ const PricingPlan = ({
   price,
   actionTitle,
   content,
+  contact,
   defaultAction = false,
   selfhosted,
   className = '',
@@ -52,7 +54,7 @@ const PricingPlan = ({
               !defaultAction,
           })}
         >
-          <a href={selfhosted ? "https://docs.clickvote.dev/quickstart" : "https://app.clickvote.dev"} target="_blank" className='text-[18px] leading-[28.8px] text-[500]'>
+          <a href={contact ? 'https://cal.com/nevodavid/30min' : selfhosted ? "https://docs.clickvote.dev/quickstart" : "https://app.clickvote.dev"} target="_blank" className='text-[18px] leading-[28.8px] text-[500]'>
             {actionTitle}
           </a>
         </button>
