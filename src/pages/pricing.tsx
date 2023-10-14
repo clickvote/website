@@ -19,7 +19,7 @@ const PricePlans =  [
     selfhosted: false,
     content: [
       { title: '1,000 reactions per month', support: true },
-      { title: 'Maximum 1,000 views counts per context', support: true },
+      { title: '1,000 max views counter per context', support: true },
       { title: '1 domain', support: true },
       { title: '2 environments (across all domains)', support: true },
       { title: 'Basic analytics', support: true },
@@ -43,7 +43,7 @@ const PricePlans =  [
     selfhosted: false,
     content: [
       { title: '10,000 reactions per month', support: true },
-      { title: 'Maximum 5,000 views counter per context', support: true },
+      { title: '5,000 max views counter per context', support: true },
       { title: '2 domains', support: true },
       { title: '6 environments (across all domains)', support: true },
       { title: 'Pro analytics (30 days log retention)', support: true },
@@ -66,7 +66,7 @@ const PricePlans =  [
     selfhosted: false,
     content: [
       { title: '50,000 reactions per month', support: true },
-      { title: 'Maximum 25,000 views counter per context', support: true },
+      { title: '25,000 max views counter per context', support: true },
       { title: '3 domains', support: true },
       { title: '15 environments (across all domains)', support: true },
       { title: 'Public fingerprint support', support: true },
@@ -102,7 +102,7 @@ const PricePlans =  [
 const PricePlans1 = [
   {
     title: 'Self Hosted',
-    description: 'Self hosted version of ClickVote',
+    description: 'Self hosted version of Clickvote',
     price: '$0',
     actionTitle: 'Get Started Guide',
     selfhosted: true,
