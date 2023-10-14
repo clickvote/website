@@ -46,18 +46,19 @@ const PricingPlan = ({
         {price}
       </p>
       <div className='flex flex-col gap-[32px]'>
-        <button
+        <a
+          href={contact ? 'https://cal.com/nevodavid/30min' : selfhosted ? "https://docs.clickvote.dev/quickstart" : "https://app.clickvote.dev"} target="_blank"
           className={cn({
-            'rounded-[7px] border-[1px] bg-gradient-to-b py-[16px]': true,
+            'rounded-[7px] border-[1px] bg-gradient-to-b py-[16px] text-center': true,
             'border-transparent from-[#AF46FF] to-[#950AFF]': defaultAction,
             'border-[#FFFFFF66] from-[#FFFFFF16] to-[#FFFFFF00]':
               !defaultAction,
           })}
         >
-          <a href={contact ? 'https://cal.com/nevodavid/30min' : selfhosted ? "https://docs.clickvote.dev/quickstart" : "https://app.clickvote.dev"} target="_blank" className='text-[18px] leading-[28.8px] text-[500]'>
+          <span className='text-[18px] leading-[28.8px] text-[500]'>
             {actionTitle}
-          </a>
-        </button>
+          </span>
+        </a>
         <div className='h-[1px] bg-[#FFFFFF80]' />
         <div className='flex flex-col gap-[24px]'>
           {content &&
