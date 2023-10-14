@@ -70,8 +70,8 @@ const ReactCodeSnippet = () => {
         <span className='mr-4' />
         <span className='mr-4' />
         <span className='text-white'>{`<`}</span>
-        <span className='text-[#7A7A7A]'>ClickVoteComponent id</span>
-        <span className='text-white'>=</span>
+        <span className='text-[#7A7A7A]'>ClickVoteComponent </span>
+        <span className='text-white'>id=</span>
         <span className='text-[#7A7A7A]'>{`{`}</span>
         <span className='text-[#B9FFF2]'>CONTEXT</span>
         <span className='text-[#7A7A7A]'>{`}`}</span>
