@@ -67,6 +67,7 @@ export default function Footer() {
 
           {/*</div>*/}
           <div className='flex w-full max-w-[174px] flex-col gap-2'>
+            <FootLink title='Book a call' url="https://cal.com/nevodavid/30min" />
             <FootLink title='Terms of Use' url="/terms-of-use" />
             <FootLink title='Privacy Policy'  url="/privacy-policy" />
           </div>
