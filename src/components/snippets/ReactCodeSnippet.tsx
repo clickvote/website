@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 const ReactCodeSnippet = () => {
   return (
     <div className='font-ibm'>
@@ -8,7 +7,7 @@ const ReactCodeSnippet = () => {
         <span className='text-[#7A7A7A]'>1</span>
         <span className='mr-6' />
         <span className='text-white'>import </span>
-        <span className='text-[#7A7A7A]'>{`{ ClickVoteProvider, ClickVoteComponent, LikeStyle }`} </span>
+        <span className='text-[#7A7A7A]'>{`{ ClickVoteProvider }`} </span>
         <span className='text-white'>from </span>
         <span className='text-[#AF46FF]'>{`'@clickvote/react'`}</span>
         <span className='text-[#7A7A7A]'>; </span>
